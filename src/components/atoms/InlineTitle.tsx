@@ -1,10 +1,20 @@
 interface InlineTitleProps {
     value: string,
-    icon: string,
-    variant: 'success' | 'warning' | 'danger' | 'info';
+    iconRight?: string,
+    iconLeft?: string,
+    variant?: 'success' | 'warning' | 'danger' | 'info';
+    className?: string,
+    size?: 'verySmall' | 'small' | 'medium' | 'large'; // Add size prop
 }
 
-export default function InlineTitle({value,icon,variant}:InlineTitleProps) {
+export default function InlineTitle({value,iconRight,iconLeft,variant,className,size = 'verySmall'}:InlineTitleProps) {
+
+    const sizeClasses = {
+      verySmall: 'text-xs',
+      small: 'text-lg',
+      medium: 'text-xl',
+      large: 'text-2xl',
+    };
 
     const getColorVariant = (color: InlineTitleProps['variant']) => {
         switch (color) {
@@ -22,9 +32,20 @@ export default function InlineTitle({value,icon,variant}:InlineTitleProps) {
       }
 
     return (
-        <div className="flex items-center justify-between">
-            <span className={`text-xs ${getColorVariant(variant)} `}>Place of dischange</span>
-            <i className={`fi fi-rr-${icon} ${getColorVariant(variant)}`}></i>
+        <div className={`flex items-center ${className}`}>
+            {
+              iconLeft && (
+                <i className={`fi fi-rr-${iconLeft} ${getColorVariant(variant)} mt-1 me-3`}></i>
+              )
+            }
+            <div className={`font-bold ${sizeClasses[size]} ${getColorVariant(variant)}`}>
+              <h1>{value}</h1>
+            </div>
+            {
+              iconRight && (
+                <i className={`fi fi-rr-${iconRight} ${getColorVariant(variant)} mt-1 ml-3`}></i>
+              )
+            }
         </div>
     )
 }

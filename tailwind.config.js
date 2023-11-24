@@ -20,5 +20,22 @@ module.exports = {
       
     },
   },
+  purge: {
+    content: [
+      "./app/**/*.{js,ts,jsx,tsx,mdx}",
+      "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+      "./components/**/*.{js,ts,jsx,tsx,mdx}",
+      "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    options: {
+      safelist: [
+        'col-span-4',
+        'col-span-6',
+        'col-span-8',
+        'col-span-12',
+        // Add your dynamic classes here as needed
+      ],
+    },
+  },
   plugins: [],
 }

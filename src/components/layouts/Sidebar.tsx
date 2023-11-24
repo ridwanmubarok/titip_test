@@ -45,7 +45,7 @@ const Sidebar: React.FC<SidebarProps> = ({ MenuContent }) => {
                     <div className="flex p-3 flex-col gap-5">
                         {/* APP LOGO SECTIONS */}
                         <div className="flex justify-center my-5">
-                            <div className='text-lg font-bold'>LOGO</div>
+                            <i className="fi fi-rr-sailboat text-[2rem]"></i>
                         </div>
                         {/* NAVIGATION SECTIONS  */}
                         <div className="flex justify-center">
