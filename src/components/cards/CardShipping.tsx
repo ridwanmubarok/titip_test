@@ -1,52 +1,30 @@
-import ShippingLogs from "../atoms/ShippingLogs";
+"use client";
+
+import Hstack from "../Stacks/Hstack";
 import VerticalText from "../atoms/VerticalText";
-import Badge from "../badges";
 
 interface CardShippingProps {
-    container_id: string,
-    end_customer: string,
-    customer_reference: string,
-    status: string,
+    group_name: string,
+    id: number,
+    onClick: (id: number) => void;
 }
 
 
-export default function CardShipping(){
+export default function CardShipping({group_name,onClick,id}: CardShippingProps){
+
+    const handleCardClick = () => {
+        onClick(id);
+    };
+
     return(
-        <div className="border rounded-md shadow-sm p-3">
-            <div className="grid grid-cols-12 gap-3">
-
-                <VerticalText w={6} label="Container ID" value="H5323277482348348"/>
-                <VerticalText w={6} label="End Customer" value="end_customer_demo"/>
-                <VerticalText w={6} label="Customer Reference" value="demo 0610"/>
-                <VerticalText w={6} label="Status" value="In Progress"/>
-
-                <ShippingLogs className="mt-5 col-span-8" logs={[]}/>
-
-                <div className="col-span-4 flex flex-col justify-end pb-4">
-                    <Badge variant="success" value="COMPLETE"  />
-                </div>
-                <div className="col-span-12 flex flex-col gap-1">
-                    <span className="text-xs text-gray-400">
-                        Currently
-                    </span>
-                    <div className="flex items-center">
-                        <div className="text-black me-3">
-                        <i className="fi fi-rs-ship-side"></i>
-                        </div>
-                        <div className="flex gap-2 items-center text-xs text-black font-bold">
-                            <div>
-                                New York 
-                            </div>
-                            <div>
-                                <i className="fi fi-rr-arrow-right"></i>
-                            </div>
-                            <div>
-                                KLAPEDA 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div onClick={handleCardClick} className="border rounded-md shadow-sm p-3 hover:bg-gray-50">
+            <Hstack className="items-center justify-between">
+                    <Hstack className="item-center">
+                        <i className="fi fi-rr-ship mt-1 me-3 text-[1.5rem]"></i>
+                        <VerticalText w={6} label="Group Name" value={group_name}/>
+                    </Hstack>
+                    <i className="fi fi-rr-angle-small-right"></i>
+            </Hstack>
         </div>
     )
 }

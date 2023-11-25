@@ -3,7 +3,7 @@ import {create} from 'zustand'
 import { persist, createJSONStorage, StateStorage } from "zustand/middleware";
 import { toast } from "react-toastify";
 import { LoginUser } from './action';
-
+import Cookies from 'js-cookie';
 
 interface AuthState {
     isLogin: boolean,
@@ -33,8 +33,10 @@ export const useAuthStore = create<AuthState>()(
             loading: false,
             Login: async (credentials) => {
                 try {
+                    set(() => ({
+                        loading: true
+                    }));
                     const resLogin = await LoginUser(credentials);
-                    console.log(resLogin);
                     if (resLogin) {
                         set(() => ({
                             token: {
@@ -44,9 +46,15 @@ export const useAuthStore = create<AuthState>()(
                             isLogin: true,
                             user: resLogin?.user
                         }));
+                        window.localStorage.setItem("access_token", resLogin?.access_token);
+                        Cookies.set('isLoggedIn','true');
+                        Cookies.set('access_token',resLogin?.access_token);
                         return resLogin;
                     }else throw resLogin;
                 } catch (error) {
+                    set(() => ({
+                        loading: false
+                    }));
                     toast.error("Check your User email and Password!");
                     throw error;
                 }

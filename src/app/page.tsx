@@ -10,11 +10,12 @@ import useAuth from "@/stores/Auth";
 
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
-import { useState,useEffect } from "react";
 import * as Yup from "yup";
 
 export default function Page() {
   const { Login,loading } = useAuth();
+  const router = useRouter();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -27,8 +28,8 @@ export default function Page() {
     onSubmit: async (values) => {
       try {
         await Login(values);
+        router.push("/dashboard");
       } catch (error) {}
-        // setLoading(false);
     },
   });
 
@@ -40,8 +41,8 @@ export default function Page() {
             <Hstack className="justify-center items-center">
                 <i className="fi fi-rr-sailboat text-[3.2rem] me-2 border-r px-3"></i>
                 <VStack className="justify-center h-full mt-5">
-                  <span className="font-bold text-[2rem] leading-3">FLEET</span>
-                  <span className="font-bold text-[2rem]">MONITORING</span>
+                  <span className="font-bold text-[2rem] text-white leading-3">FLEET</span>
+                  <span className="font-bold text-[2rem] text-white">MONITORING</span>
                 </VStack>
             </Hstack>
         </VStack>
@@ -59,7 +60,7 @@ export default function Page() {
         </VStack>
 
         <Hstack className="justify-end mt-20">
-          <Button loading={false} onClick={() => formik.handleSubmit()} variant="primary" size="medium">
+          <Button loading={loading ? true : false} onClick={() => formik.handleSubmit()} variant="primary" size="medium">
             <i className="fi fi-rr-sign-in-alt me-3 mt-1"></i>
             LOGIN
           </Button>

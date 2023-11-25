@@ -8,12 +8,17 @@ import VStack from '../Stacks/Vstack';
 import Stack from '../Stacks/Stack';
 import Title from '../atoms/Title';
 
-export default function FleetMonitorinMapgDetail(){
+
+interface FleetMonitoringMapDetailProps {
+    onCloseDetail: ()=> void,
+}
+
+export default function FleetMonitorinMapgDetail({onCloseDetail}:FleetMonitoringMapDetailProps){
 
     return(
        <Stack className='grid grid-cols-12 overflow-hidden'>
               <Hstack className='justify-end col-span-12 p-3'>
-                <button className="text-lg text-red-500">
+                <button onClick={onCloseDetail} className="text-lg text-red-500">
                   <i className="fi fi-rr-cross-small "></i>
                 </button>
               </Hstack>
@@ -22,7 +27,7 @@ export default function FleetMonitorinMapgDetail(){
               </Stack>
               <VStack className='rounded-r-lg overflow-hidden col-span-4'>
                   <VStack className='bg-black p-3'>
-                      <InlineTitle icon='square' value='Place of dischange' className='justify-between' variant='success'/>
+                      <InlineTitle iconRight='square' value='Place of dischange' className='justify-between' variant='success'/>
                       <Title value='KLAIPEDA' color='dark' size='large'/>
                       <Hstack className='justify-between'>
                         <Stack>

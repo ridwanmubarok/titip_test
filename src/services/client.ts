@@ -40,7 +40,7 @@ const Client = axios.create({
       if (status === 401) {
         if (typeof window !== 'undefined') {
           window.localStorage.clear()
-          window.location.href = '/auth/signin'
+          // window.location.href = '/'
         }
       }
       logOnDev(

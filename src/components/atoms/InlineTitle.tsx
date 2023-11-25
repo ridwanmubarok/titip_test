@@ -35,7 +35,7 @@ export default function InlineTitle({value,iconRight,iconLeft,variant,className,
         <div className={`flex items-center ${className}`}>
             {
               iconLeft && (
-                <i className={`fi fi-rr-${iconLeft} ${getColorVariant(variant)} mt-1 me-3`}></i>
+                <i className={`fi fi-rr-${iconLeft} ${sizeClasses[size]} ${getColorVariant(variant)} mt-1 me-3`}></i>
               )
             }
             <div className={`font-bold ${sizeClasses[size]} ${getColorVariant(variant)}`}>
@@ -43,7 +43,7 @@ export default function InlineTitle({value,iconRight,iconLeft,variant,className,
             </div>
             {
               iconRight && (
-                <i className={`fi fi-rr-${iconRight} ${getColorVariant(variant)} mt-1 ml-3`}></i>
+                <i className={`fi fi-rr-${iconRight} ${sizeClasses[size]} ${getColorVariant(variant)} mt-1 ml-3`}></i>
               )
             }
         </div>
