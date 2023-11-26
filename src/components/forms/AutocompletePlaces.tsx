@@ -16,6 +16,7 @@ interface AutoCompleteProps {
   
 
 export default function AutoCompletePlaces({ label,placeholder,value,className,onPlaceSelected,error,name }:AutoCompleteProps){
+    let api = process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string;
     return (
         <div className="w-full">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -25,7 +26,7 @@ export default function AutoCompletePlaces({ label,placeholder,value,className,o
             className="block w-full shadow-md p-3 text-sm text-gray-900 border border-gray-100 
             rounded-md bg-gray-50 hover:outline-none focus:outline-none"
             placeholder={placeholder}
-              apiKey={'AIzaSyBf6xKlSKnCS9F59L5EqvUgRXN0MuzdfpU'}
+              apiKey={api}
             />
         </div>
     )
