@@ -17,6 +17,9 @@ export default function FleetMonitorinMapgTimeplan(){
             <Stack className="p-3 overflow-x-auto">
                 <ListGroup className="items-center sm:flex space-x-1 ">
                     <ListItemTimeplan/>
+                    <ListItemTimeplan/>
+                    <ListItemTimeplan/>
+                    <ListItemTimeplan/>
                 </ListGroup>
             </Stack>
 

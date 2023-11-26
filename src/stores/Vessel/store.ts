@@ -5,7 +5,7 @@ interface VesselState {
     loading: boolean,
     vessels?: Array<IVessel>,
     vesselGroups?: Array<IVesselGroup>,
-    vesselGroupDetail?: IVesselGroupDetail | null,
+    vesselGroupDetail?: IVesselGroupDetail | null | undefined,
     getListVessel: () => Promise<IVesselRes>,
     getGroupVessel: () => Promise<IVesselGroupRes>,
     getGroupVesselDetail: (id:number) => Promise<IVesselGroupRes>,
@@ -55,6 +55,7 @@ export const useVessel = create<VesselState>(
                 if(res){
                     set({
                         loading: false,
+                        vesselGroupDetail: res
                     });
                     return res;
                 }else throw res;

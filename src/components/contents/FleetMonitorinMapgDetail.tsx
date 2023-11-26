@@ -7,13 +7,19 @@ import Hstack from '../Stacks/Hstack';
 import VStack from '../Stacks/Vstack';
 import Stack from '../Stacks/Stack';
 import Title from '../atoms/Title';
-
-
+import { format } from 'date-fns';
 interface FleetMonitoringMapDetailProps {
     onCloseDetail: ()=> void,
+    groupDetail?: IVesselGroupDetail | null | undefined,
 }
 
-export default function FleetMonitorinMapgDetail({onCloseDetail}:FleetMonitoringMapDetailProps){
+export default function FleetMonitorinMapgDetail({onCloseDetail,groupDetail}:FleetMonitoringMapDetailProps){
+
+    const dateFormat = (date:string) => {
+      const timestampDate = new Date(date);
+      const formattedTimestampString = format(timestampDate, 'yyyy-MM-dd HH:mm');
+      return formattedTimestampString;
+    }
 
     return(
        <Stack className='grid grid-cols-12 overflow-hidden'>
@@ -23,28 +29,29 @@ export default function FleetMonitorinMapgDetail({onCloseDetail}:FleetMonitoring
                 </button>
               </Hstack>
               <Stack className="col-span-8 rounded-l-lg overflow-hidden bg-white h-[500px]"> 
-                  <Maps/>
+                  <Maps vessels={groupDetail?.vessels ?? []}/>
               </Stack>
               <VStack className='rounded-r-lg overflow-hidden col-span-4'>
                   <VStack className='bg-black p-3'>
-                      <InlineTitle iconRight='square' value='Place of dischange' className='justify-between' variant='success'/>
-                      <Title value='KLAIPEDA' color='dark' size='large'/>
+                      <InlineTitle iconRight='eye' value='Vessel Group Detail' className='justify-between' variant='success'/>
+                      <Title value={groupDetail?.name ?? ''} color='dark' size='large'/>
                       <Hstack className='justify-between'>
                         <Stack>
-                          <InlineText label='ETA' value='2023-11-10' width='small' />
-                          <InlineText label='initial' value='2023-11-10' width='small' />
+                          <InlineText label='ETA' value={groupDetail?.vessels[0]?.eta ?? ' - '} width='small' />
+                          <InlineText label='initial' value={groupDetail?.vessels[0]?.created_at ?? ' - '} width='small' />
                         </Stack>
                         <Badge variant='success' value='On Time' icon='clock'/>
                       </Hstack>
                   </VStack>
                   <VStack className='justify-between p-3 bg-white h-full'>
                       <VStack>
-                        <InlineText color='light' label='Container' value='H4SU434353' width='medium' />
-                        <InlineText color='light' label='Shipment' value='demo 1610' width='medium' />
-                        <InlineText color='light' label='Customer' value='end_customer_demo' width='medium' />
-                        <InlineText color='light' label='Carrier' value='maersk' width='medium' />
+                        <InlineText color='light' label='Vessel Name' value={groupDetail?.vessels[0]?.vessel_name ?? '-'} width='medium' />
+                        <InlineText color='light' label='Vessel MMSI' value={groupDetail?.vessels[0]?.vessel_mmsi ?? '-'} width='medium' />
+                        <InlineText color='light' label='IMO' value={groupDetail?.vessels[0]?.vessel_imo ?? '-'} width='medium' />
+                        <InlineText color='light' label='Origin' value={groupDetail?.vessels[0]?.origin ?? '-'} width='medium' />
+                        <InlineText color='light' label='Destination' value={groupDetail?.vessels[0]?.destination ?? '-'} width='medium' />
                       </VStack>
-                      <InlineTitle value='Last Update : 2023-11-15 02:00' className='self-end border p-3 italic rounded-md'/>
+                      <InlineTitle value={`Last Update : ${dateFormat(groupDetail?.updated_at ?? '')}`} className='self-end border p-3 italic rounded-md'/>
                   </VStack>
               </VStack>
         </Stack>

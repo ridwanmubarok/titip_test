@@ -25,8 +25,7 @@ export default function AutoCompletePlaces({ label,placeholder,value,className,o
             className="block w-full shadow-md p-3 text-sm text-gray-900 border border-gray-100 
             rounded-md bg-gray-50 hover:outline-none focus:outline-none"
             placeholder={placeholder}
-              apiKey={'AIzaSyA1MgLuZuyqR_OGY3ob3M52N46TDBRI_9k'}
-              onPlaceSelected={onPlaceSelected}
+              apiKey={'AIzaSyBf6xKlSKnCS9F59L5EqvUgRXN0MuzdfpU'}
             />
         </div>
     )

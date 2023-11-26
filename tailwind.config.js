@@ -29,6 +29,7 @@ module.exports = {
     ],
     options: {
       safelist: [
+        'col-span-2',
         'col-span-4',
         'col-span-6',
         'col-span-8',

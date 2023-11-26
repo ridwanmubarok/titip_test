@@ -15,15 +15,15 @@ export default function oldCardShipping({group_name}: CardShippingProps){
 
                 <VerticalText w={6} label="Group Name" value={group_name}/>
 
-                {/* <VerticalText w={6} label="End Customer" value="end_customer_demo"/>
+                <VerticalText w={6} label="End Customer" value="end_customer_demo"/>
                 <VerticalText w={6} label="Customer Reference" value="demo 0610"/>
-                <VerticalText w={6} label="Status" value="In Progress"/> */}
+                <VerticalText w={6} label="Status" value="In Progress"/>
 
-                {/* <ShippingLogs className="mt-5 col-span-8" logs={[]}/> */}
-                {/* <div className="col-span-4 flex flex-col justify-end pb-4">
+                <ShippingLogs className="mt-5 col-span-8" logs={[]}/>
+                <div className="col-span-4 flex flex-col justify-end pb-4">
                     <Badge variant="success" value="COMPLETE"  />
-                </div> */}
-                {/* <div className="col-span-12 flex flex-col gap-1">
+                </div>
+                <div className="col-span-12 flex flex-col gap-1">
                     <span className="text-xs text-gray-400">
                         Currently
                     </span>
@@ -43,7 +43,7 @@ export default function oldCardShipping({group_name}: CardShippingProps){
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
             </Stack>
         </div>
     )

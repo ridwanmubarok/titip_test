@@ -39,7 +39,7 @@ export default function Page() {
       <Stack className="col-span-4 overflow-hidden shadow-lg flex rounded-lg bg-cover bg-[url('https://images.unsplash.com/photo-1585713181935-d5f622cc2415?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]">
         <VStack className="justify-center bg-gray-800 bg-opacity-50 w-full">
             <Hstack className="justify-center items-center">
-                <i className="fi fi-rr-sailboat text-[3.2rem] me-2 border-r px-3"></i>
+                <i className="fi fi-rr-sailboat text-white text-[3.2rem] me-2 border-r px-3"></i>
                 <VStack className="justify-center h-full mt-5">
                   <span className="font-bold text-[2rem] text-white leading-3">FLEET</span>
                   <span className="font-bold text-[2rem] text-white">MONITORING</span>

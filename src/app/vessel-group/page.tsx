@@ -8,18 +8,18 @@ import VStack from "@/components/Stacks/Vstack";
 import { useVessel } from "@/stores/Vessel/store";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {seaRoute} from 'searoute-ts';
 
 
 export default function Page() {
-  const { loading,vesselGroups,getGroupVessel } = useVessel();
+  const { loading,vesselGroups,getGroupVessel,getGroupVesselDetail,vesselGroupDetail } = useVessel();
   const [isDetail,setIsDetail] = useState(false);
 
   const getDataVesselGroup = async () => {
     await getGroupVessel();
   }
 
-  const detailRendering = (id:number) => {
+  const detailRendering = async (id:number) => {
+    await getGroupVesselDetail(id);
     setIsDetail(true);
   }
 
@@ -40,7 +40,7 @@ export default function Page() {
           {
             isDetail ? (
               <>
-                <FleetMonitorinMapgDetail onCloseDetail={closeDetailRendering}/>
+                <FleetMonitorinMapgDetail groupDetail={vesselGroupDetail ?? null} onCloseDetail={closeDetailRendering}/>
                 <FleetMonitorinMapgTimeplan/>
               </>
             ) : (
